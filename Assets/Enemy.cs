@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
 {
     private float speed; //이동속도
     private Vector2 dir; //나아가야할 방향
-    public Spawner spawner; //영역밖으로 나갔을때 새로 스폰하고 죽기위해 스포너에 대한 참조
 
     private void Start()
     {
@@ -23,7 +22,7 @@ public class Enemy : MonoBehaviour
         if((transform.position.x<-Spawner.xRange-1||transform.position.x>Spawner.xRange+1) || 
             (transform.position.y < -Spawner.yRange-1 || transform.position.y > Spawner.yRange+1)) //현재 본인 좌표가 영역 밖에 있을경우
         {
-            spawner.Spawn(); //스포너에 스폰 명령 전달
+            Spawner.spawner.Spawn(); //스포너에 스폰 명령 전달
             Destroy(gameObject); //본인 삭제
         }
     }
